@@ -4,12 +4,12 @@ import YogaImages from '../YogaImages.json';
 export function Home() {
     return (
         
-        <div className="w-full min-h-screen bg-center  bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEmMlpF3jYuq10HYfCMMxzaotGN8333Cn19A&s')] backdrop-blur-md bg-cover bg-fixed py-10 px-4 space-y-20">
+        <div className="w-full min-h-screen bg-center bg-cover bg-fixed py-10 px-4 space-y-20">
             
             {YogaImages.map((item) => (
                 <div key={item.id} className="flex flex-col md:flex-row items-center gap-10 md:even:flex-row-reverse">
                     <div className="md:w-1/2">
-                        <p className="text-black-700 text-justify text-lg">{item.cont}</p>
+                        <p className="text-black-700 text-justify text-lg p-8">{item.cont}</p>
                     </div>
                     <div className="md:w-1/2 flex justify-center">
                         <img 

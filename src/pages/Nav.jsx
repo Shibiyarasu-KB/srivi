@@ -6,9 +6,9 @@ export default function Nav(){
     const [isOpen,setIsOpen]=useState(false);
 
     return(
-        <nav className="bg-gradient-to-r from-yellow-400 to-orange-600 text-white shadow-md p-5 sticky top-0 w-full z-50">
+        <nav className="bg-gradient-to-r from-gray-200 to-white text-white shadow-md p-5 sticky top-0 w-full z-50">
             <div className="flex items-center justify-between">
-                <h1 className="text-3xl font-bold pl-6">SrivibhaYoga</h1>
+                <h1 className="text-3xl text-gray-800 font-bold pl-6">SrivibhaYoga</h1>
 
                 <button
                     onClick={()=> setIsOpen(!isOpen)}
@@ -18,7 +18,7 @@ export default function Nav(){
                 </button>
 
 
-                <div className="hidden md:flex gap-6 font-bold">
+                <div className="hidden md:flex gap-6 font-bold text-gray-600">
                     <Link to="/">Home</Link>
                     <Link to="/About">About Us</Link>
                     <Link to="/Gallery">Gallery</Link>
