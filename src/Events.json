@@ -1,0 +1,45 @@
+{
+    "ygevent": [
+        {
+            "Name": "Yoga-1",
+            "Date": "2024-06-01",
+            "Time": "10:00 AM",
+            "Location": "Yoga Studio, Downtown",
+            "Description": "Join us for a rejuvenating yoga session led by our experienced instructor. This class is suitable for all levels."
+        },
+        {
+            "Name": "Yoga-2",
+            "Date": "2024-06-15",
+            "Time": "6:00 PM",
+            "Location": "Community Center, Uptown",
+            "Description": "Experience the benefits of yoga in this evening class designed to help you unwind and relax after a long day."
+        }
+    ],
+
+
+    "videos": [
+        {
+            "id": "001",
+            "title": "Yoga Basics - Day 1",
+            "ref": "https://youtu.be/O2EY79Ys_qg?si=aJG8H9jJ2Cq2ndpF",
+            "thumb":"O2EY79Ys_qg"
+        },
+        {
+            "id": "002",
+            "title": "Morning Flow for Flexibility",
+            "ref": "https://youtu.be/qg6HXNjo2-0?si=NOZekzza4HIHJJis",
+            "thumb":"qg6HXNjo2-0"
+        },
+        {
+            "id": "003",
+            "title": "Evening Relaxation Yoga",
+            "ref": "https://youtu.be/2SIFpx6qTIA?si=HlFr2coKAaICPG5E",
+            "thumb":"2SIFpx6qTIA"
+        }
+    ],
+
+    "AboutUs": [
+
+        {"content": "Welcome to SriVibhaya Yoga, where we are dedicated to helping you achieve physical and mental well-being through the practice of yoga. Our mission is to create a supportive and inclusive community where individuals of all ages and skill levels can explore the transformative power of yoga.At Sri Vibhaya Yoga, we believe that yoga is not just a physical practice but a holistic approach to health and wellness. Our experienced instructors are passionate about guiding you on your yoga journey, whether you're a beginner or an advanced practitioner. We offer a variety of classes, workshops, and events designed to meet your unique needs and goals.Our studio is a serene and welcoming space where you can escape the stresses of daily life and connect with your inner self. We are committed to providing a safe and nurturing environment for all our students, fostering a sense of community and support. Join us at Sri Vibhaya Yoga and embark on a journey of self-discovery, growth, and transformation through the practice of yoga."}
+    ]
+}
