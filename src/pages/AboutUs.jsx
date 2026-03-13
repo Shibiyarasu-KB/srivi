@@ -1,17 +1,7 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import abtcont from "../Events.json";
-import { Auth } from "../auth";
 
 export default function AboutUs() {
-
-  const navigate = useNavigate();
-
-    useEffect(() => {
-        Auth(navigate); 
-    }, [navigate]);
-
-  const cont=abtcont.AboutUs || [];
+  const cont = abtcont.AboutUs || [];
 
   return (
     <div className="min-h-screen bg-center bg-cover bg-fixed py-10">

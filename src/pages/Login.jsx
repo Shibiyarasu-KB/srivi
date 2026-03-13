@@ -1,13 +1,22 @@
-import {useState} from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useAuth } from '../useAuth';
 
 export default function AuthPage() {
+  const { user, login } = useAuth();
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [msg, setMsg] = useState('');
-  const url = "http://localhost:3000/users";
+  const url = "https://fantastic-space-fortnight-x5r9gj5g6gjr2v4vp-3000.app.github.dev/users";
+
+  useEffect(() => {
+    if (user) {
+      login(user);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -21,7 +30,7 @@ export default function AuthPage() {
       if (isLogin) {
         const res = await axios.get(url, {params:{email, password}});
         if (res.data.length > 0) {
-          setMsg("Success! Welcome " + res.data[0].name);
+          login(res.data[0]);
         } else {
           setMsg("Invalid credentials.");
         }
@@ -39,7 +48,7 @@ export default function AuthPage() {
           setIsLogin(true);
         }
       }
-    } catch (err) {
+    } catch {
       setMsg("Connection failed.");
     }
   };
