@@ -1,14 +1,14 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Nav(){
 
     const [isOpen,setIsOpen]=useState(false);
 
     return(
-        <nav className="bg-gradient-to-r from-gray-200 to-white text-white shadow-md p-5 sticky top-0 w-full z-50">
-            <div className="flex items-center justify-between">
-                <h1 className="text-3xl text-gray-800 font-bold pl-6">SrivibhaYoga</h1>
+        <nav className="bg-gradient-to-r from-gray-200 to-white text-white shadow-md sticky top-0 w-full z-50">
+            <div className="container mx-auto flex items-center justify-between p-5">
+                <h1 className="text-3xl text-gray-800 font-bold">SrivibhaYoga</h1>
 
                 <button
                     onClick={()=> setIsOpen(!isOpen)}

@@ -1,10 +1,61 @@
 {
-    "users":[
-        {
-            "id":1,
-            "name": "shibi",
-            "email":"shibiyarasu@gmail.com",
-            "password":"techie"
-        }
-    ]
+  "users": [
+    {
+      "id": "f735",
+      "name": "shibi",
+      "email": "shibiyarasu@gmail.com",
+      "password": "techie006"
+    },
+    {
+      "id": "64d3",
+      "firstname": "raju",
+      "email": "raju@gmail.com",
+      "login": {
+        "password": "12345678"
+      }
+    },
+    {
+      "id": "85b2",
+      "firstname": "raju",
+      "email": "raju1@gmail.com",
+      "password": "12345678"
+    },
+    {
+      "id": "47aa",
+      "firstname": "hi",
+      "email": "raju2@gmail.com",
+      "password": "123456678"
+    },
+    {
+      "id": "7333",
+      "name": "shibi1",
+      "email": "shibiyarasu1@gmail.com",
+      "password": "techie006"
+    },
+    {
+      "id": "a2d6",
+      "name": "done",
+      "email": "shibiyarasu111@gmail.com",
+      "password": "techie006"
+    },
+    {
+      "id": "2198",
+      "name": "done",
+      "email": "shibiyarasu111@gmail.com",
+      "password": "1"
+    },
+    {
+      "id": "a26f",
+      "name": "done",
+      "email": "shibiyarasu111@gmail.com",
+      "password": "1"
+    },
+    {
+      "id": "5e19",
+      "name": "hirthi",
+      "email": "hir@gmail.com",
+      "password": "12341234"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

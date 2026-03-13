@@ -14,9 +14,11 @@ export default function AboutUs() {
   const cont=abtcont.AboutUs || [];
 
   return (
-    <div className="w-full min-h-screen bg-center  bg-cover bg-fixed text-justify">
-      <h1 className="text-4xl font-bold text-center py-10">About Us</h1>
-      <p className="px-60 py-10 text-lg text-justify text-base/8 tracking-wider">{cont[0]?.content}</p>
+    <div className="min-h-screen bg-center bg-cover bg-fixed py-10">
+      <div className="container">
+        <h1 className="text-4xl font-bold text-center mb-6">About Us</h1>
+        <p className="p-16 text-lg tracking-wide leading-relaxed text-justify">{cont[0]?.content}</p>
+      </div>
     </div>
   )
 }

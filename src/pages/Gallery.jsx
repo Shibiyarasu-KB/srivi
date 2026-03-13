@@ -11,7 +11,8 @@ export default function Gallery(){
         },[]);
     return(
         <>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-8">
         {title.map(item=>(
             <p className="border-2 border-yellow-500 p-4 my-4 max-w-lg mx-auto rounded-xl shadow-lg" key={item.id}>
                 <a href={item.ref} target="_blank" rel="noreferrer">
@@ -24,6 +25,7 @@ export default function Gallery(){
                 <span className="block text-center font-bold text-lg py-4">{item.title}</span>
             </p>
         ))}
+        </div>
         </div>
         </>
     )

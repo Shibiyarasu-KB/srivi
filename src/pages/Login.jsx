@@ -1,70 +1,70 @@
-import { useState } from 'react';
+import {useState} from 'react';
+import axios from 'axios';
 
 export default function AuthPage() {
-    // State to toggle between Login and Register
-    const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(true);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [msg, setMsg] = useState('');
+  const url = "http://localhost:3000/users";
 
-    return (
-        <div className="flex h-screen items-center justify-center bg-gray-50 p-4">
-            <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border border-gray-100 transition-all duration-300">
-                
-                <div className="text-center mb-8">
-                    <h1 className="text-3xl font-bold text-gray-800">
-                        {isLogin ? "Welcome Back" : "Create Account"}
-                    </h1>
-                    <p className="text-gray-500 mt-2">
-                        {isLogin ? "Please enter your details to login" : "Join SrivibhaYoga today"}
-                    </p>
-                </div>
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    setMsg('Processing...');
 
-                <form className="space-y-4">
-                    {!isLogin && (
-                        <div>
-                            <label className="block mb-2 text-sm font-medium text-gray-700">Full Name</label>
-                            <input
-                                type="text"
-                                placeholder="John Doe"
-                                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-yellow-500 outline-none transition-all"
-                            />
-                        </div>
-                    )}
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) return setMsg("Invalid email format.");
+    if (password.length < 8) return setMsg("Password must be 8+ chars.");
 
-                    <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-700">Email Address</label>
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-yellow-500 outline-none transition-all"
-                        />
-                    </div>
+    try {
+      if (isLogin) {
+        const res = await axios.get(url, {params:{email, password}});
+        if (res.data.length > 0) {
+          setMsg("Success! Welcome " + res.data[0].name);
+        } else {
+          setMsg("Invalid credentials.");
+        }
+      } else {
+        
+        const checkRes = await axios.get(url, {params:{email}});
+        if (checkRes.data.length > 0) {
+          return setMsg("mail already registered.");
+        }
 
-                    <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-700">Password</label>
-                        <input
-                            type="password"
-                            placeholder="••••••••"
-                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-yellow-500 outline-none transition-all"
-                        />
-                    </div>
+        
+        const res = await axios.post(url, {name, email, password});
+        if (res.status === 201) {
+          setMsg("Registered successfully!");
+          setIsLogin(true);
+        }
+      }
+    } catch (err) {
+      setMsg("Connection failed.");
+    }
+  };
 
-                    <button 
-                        type="submit"
-                        className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 rounded-lg shadow-lg hover:shadow-yellow-500/30 transition-all transform active:scale-[0.98] mt-2"
-                    >
-                        {isLogin ? "Sign In" : "Register Now"}
-                    </button>
-                </form>
-
-                <p className="text-center text-sm text-gray-600 mt-8">
-                    {isLogin ? "Don't have an account?" : "Already have an account?"}
-                    <button 
-                        onClick={() => setIsLogin(!isLogin)}
-                        className="text-yellow-600 font-semibold hover:underline ml-1 focus:outline-none"
-                    >
-                        {isLogin ? "Register here" : "Login here"}
-                    </button>
-                </p>
-            </div>
-        </div>
-    );
+  return (
+    <div className="flex h-screen items-center justify-center bg-gray-50 p-4">
+      <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border">
+        <h1 className="text-2xl font-bold text-center mb-6">{isLogin ? "Login" : "Register"}</h1>
+        {msg && (
+          <div className={`p-3 mb-4 text-center rounded text-sm font-bold ${msg.includes('Error') ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600'}`}>
+            {msg}
+          </div>
+        )}
+        <form className="space-y-4" onSubmit={handleFormSubmit}>
+          {!isLogin && <input type="text" placeholder="Name" value={name} onChange={(e)=>setName(e.target.value)} className="w-full p-3 border rounded-lg" required/>}
+          <input type="email" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)} className="w-full p-3 border rounded-lg" required/>
+          <input type="password" placeholder="password" value={password} onChange={(e)=>setPassword(e.target.value)} className="w-full p-3 border rounded-lg" required/>
+          <button type="submit" className="w-full bg-yellow-500 text-white font-bold py-3 rounded-lg">
+            {isLogin ? "Sign In" : "Register"}
+          </button>
+        </form>
+        <button onClick={()=>{setIsLogin(!isLogin); setMsg('');}} className="w-full text-center text-sm text-yellow-600 mt-6 underline">
+          {isLogin ? "Create account" : "Back to Login"}
+        </button>
+      </div>
+    </div>
+  );
 }
